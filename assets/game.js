@@ -1,5 +1,19 @@
 (function () {
+$("#results").hide();
+$("#quiz").hide();
+$("#submit").hide();
+
+$("#start").on("click", function(){
+  $("#results").hide();
+$("#quiz").show();
+
+buildQuiz();
+})
+
   function buildQuiz() {
+    $("#start").hide();
+    $("#submit").show();
+    //$("#quiz").show();
     // we'll need a place to store the HTML output
     var output = []; // for each question...
 
@@ -20,6 +34,10 @@
   }
 
   function showResults() {
+    $("#results").show();
+    $("#quiz").hide();
+    $("#start").show();
+    $("#submit").hide();
     // gather answer containers from our quiz
     var answerContainers = quizContainer.querySelectorAll(".answers"); // keep track of user's answers
 
@@ -42,6 +60,7 @@
         answerContainers[questionNumber].style.color = "red";
       }
     }); // show number of correct answers out of total
+    //$("#results").append("".concat(numCorrect, " out of ").concat(myQuestions.length));
 
     resultsContainer.innerHTML = "".concat(numCorrect, " out of ").concat(myQuestions.length);
   }
@@ -144,7 +163,8 @@
   }, 
 ]; // display quiz right away
 
-  buildQuiz(); // on submit, show results
+  // buildQuiz(); // on submit, show results
 
-  submitButton.addEventListener("click", showResults);
+  //submitButton.addEventListener("click", showResults);
+  submit.addEventListener("click", showResults);
 })();
