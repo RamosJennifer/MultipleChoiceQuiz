@@ -4,7 +4,8 @@ $("#quiz").hide();
 $("#submit").hide();
 
 $("#start").on("click", function(){
-  $("#results").hide();
+$("#imgThumbnail").hide();
+$("#results").hide();
 $("#quiz").show();
 
 buildQuiz();
