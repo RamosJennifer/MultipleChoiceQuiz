@@ -29,7 +29,7 @@ buildQuiz();
       $("#timer").html("<h2> Time Left: " + number + "</h2>");
 
       if (number === 0) {
-        alert("Time Up!");
+        showResults()
       }
     }
   }
