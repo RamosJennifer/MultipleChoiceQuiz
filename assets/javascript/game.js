@@ -2,14 +2,37 @@
 $("#results").hide();
 $("#quiz").hide();
 $("#submit").hide();
+$("#timer").hide();
 
 $("#start").on("click", function(){
 $("#imgThumbnail").hide();
 $("#results").hide();
 $("#quiz").show();
+$("#timer").show();
+twoMinutes();
+
 
 buildQuiz();
 })
+  var number = 120;
+  var intervalID;
+
+  function twoMinutes () {
+
+    // function run () {
+      clearInterval(intervalID);
+      intervalID = setInterval(decrement,1000);
+    // }
+    function decrement () {
+      number--;
+
+      $("#timer").html("<h2> Time Left: " + number + "</h2>");
+
+      if (number === 0) {
+        alert("Time Up!");
+      }
+    }
+  }
 
   function buildQuiz() {
     $("#start").hide();
@@ -39,6 +62,7 @@ buildQuiz();
     $("#quiz").hide();
     $("#start").show();
     $("#submit").hide();
+    $("#timer").hide();
     // gather answer containers from our quiz
     var answerContainers = quizContainer.querySelectorAll(".answers"); // keep track of user's answers
 
@@ -97,7 +121,7 @@ buildQuiz();
     },
     correctAnswer: "a"
   }, {
-    question: "Why does Lilo bring pudge the fish a peanut butter sandwich every Thursday?",
+    question: "Why does Lilo bring Pudge the Fish a peanut butter sandwich every Thursday?",
     answers: {
     a: "Because you can't give a fish tuna!",
     b: "(Do you know what tuna is made of)?",
